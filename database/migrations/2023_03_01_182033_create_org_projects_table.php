@@ -26,7 +26,7 @@ class CreateOrgProjectsTable extends Migration
             $table->string('app_end_date')->nullable();
             $table->string('project_start_date')->nullable();
             $table->string('Project_end_date')->nullable();
-$table->integer('status')->default(1);
+            $table->integer('status')->default(1);
             $table->bigInteger('assignee_id')->unsigned()->index()->nullable();
             $table->foreign('assignee_id')->references('id')->on('users');
             $table->timestamps();

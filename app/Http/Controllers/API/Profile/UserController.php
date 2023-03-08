@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\API\Profile;
 
 use App\Models\User;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -30,4 +32,14 @@ class UserController extends Controller
             'message' => 'success',
         ];
     }
+
+    public function myReview(){
+        $reviews = Review::with('reviewSander','project', 'reviewReceiver')->where('sender_id',Auth::id())->get();
+        return [
+            'data' => $reviews,
+            'status' => 200,
+            'message' => 'success',
+        ];
+    }
+
 }

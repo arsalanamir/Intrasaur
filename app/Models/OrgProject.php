@@ -56,4 +56,8 @@ class OrgProject extends Model
     {
         return $this->hasMany(ProjectQualification::class, 'project_id');
     }
+    public function review()
+    {
+        return $this->hasMany(Review::class, 'project_id');
+    }
 }

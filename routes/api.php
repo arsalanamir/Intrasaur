@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\API\Admin\ComplaintController;
+use App\Http\Controllers\API\Admin\DocumentsController;
+use App\Http\Controllers\API\Admin\ProfileController;
+use App\Http\Controllers\API\Admin\ReiewController;
 use App\Http\Controllers\API\Auth\CodeCheckController;
 use App\Http\Controllers\API\Auth\ForgotPasswordController;
 use App\Http\Controllers\API\Auth\LoginController;
@@ -87,6 +91,44 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/allUsers', [UserController::class, 'getAllusers']);
     Route::get('/userProfile/{id}', [UserController::class, 'userProfile']);
 
+    Route::get('/allUserDocuments', [DocumentsController::class, 'allUserDocuments']);
+    Route::get('/approvedUserDocuments/{id}', [DocumentsController::class, 'approvedUserDocuments']);
+    Route::get('/rejectUserDocuments/{id}', [DocumentsController::class, 'rejectUserDocuments']);
+    Route::post('/rejectUserDocumentsWithReason', [DocumentsController::class, 'rejectUserDocumentsWithReason']);
+    Route::post('/searchUserDocumentName', [DocumentsController::class, 'searchUserDocumentName']);
+
+    Route::get('/allOrgDocuments', [DocumentsController::class, 'allOrgDocuments']);
+    Route::get('/approvedOrgDocuments/{id}', [DocumentsController::class, 'approvedOrgDocuments']);
+    Route::get('/rejectOrgDocuments/{id}', [DocumentsController::class, 'rejectOrgDocuments']);
+    Route::post('/rejectOrgDocumentsWithReason', [DocumentsController::class, 'rejectOrgDocumentsWithReason']);
+    Route::post('/searchOrgDocumentName', [DocumentsController::class, 'searchOrgDocumentName']);
+
+
+    Route::get('/activeUserData', [ProfileController::class, 'activeUserData']);
+    Route::get('/allUserData', [ProfileController::class, 'allUserData']);
+    Route::get('/unActiveUserData', [ProfileController::class, 'unActiveUserData']);
+
+    Route::get('/activeOrgData', [ProfileController::class, 'activeOrgData']);
+    Route::get('/allOrgData', [ProfileController::class, 'allOrgData']);
+    Route::get('/unActiveOrgData', [ProfileController::class, 'unActiveOrgData']);
+
+    Route::get('/freezUserData/{id}', [ProfileController::class, 'freezUserData']);
+    Route::get('/deleteUserData/{id}', [ProfileController::class, 'deleteUserData']);
+    Route::post('/searchUserName', [ProfileController::class, 'searchUserName']);
+    Route::post('/searchOrgName', [ProfileController::class, 'searchOrgName']);
+
+    Route::get('/myReview', [UserController::class, 'myReview']);
+    Route::get('/userReview', [ReiewController::class, 'userReview']);
+    Route::get('/orgReview', [ReiewController::class, 'orgReview']);
+    Route::get('/approvedReview/{id}', [ReiewController::class, 'approvedReview']);
+    Route::get('/rejectReview/{id}', [ReiewController::class, 'rejectReview']);
+    Route::post('/rejectReviewWithReason', [ReiewController::class, 'rejectReviewWithReason']);
+    Route::post('/addReview', [ReiewController::class, 'addReview']);
+
+
+    Route::post('/addComplaint', [ComplaintController::class, 'addComplaint']);
+    Route::get('/allComplaints', [ComplaintController::class, 'allComplaints']);
+    Route::get('/openComplain/{id}', [ComplaintController::class, 'openComplain']);
 
 
 });

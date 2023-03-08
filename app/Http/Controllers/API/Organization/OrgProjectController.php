@@ -267,7 +267,7 @@ class OrgProjectController extends Controller
     }
         public function allProjects()
     {
-        $projectDetails = OrgProject::with('roles', 'skillsets', 'hours', 'checklists', 'experiences', 'qualifications', 'attachments', 'assignee')->where('status',1)->where('user_id', Auth::id())->get()->groupBy('assignee_id');
+        $projectDetails = OrgProject::with('roles', 'skillsets', 'hours', 'checklists', 'experiences', 'qualifications', 'attachments', 'assignee', 'review')->where('status',1)->where('user_id', Auth::id())->get()->groupBy('assignee_id');
         return [
             'data' => $projectDetails,
             'status' => 200,
@@ -276,7 +276,7 @@ class OrgProjectController extends Controller
     }
     public function allCloseProjects()
     {
-        $projectDetails = OrgProject::with('roles', 'skillsets', 'hours', 'checklists', 'experiences', 'qualifications', 'attachments', 'assignee')->where('status', 2)->where('user_id', Auth::id())->get()->groupBy('assignee_id');
+        $projectDetails = OrgProject::with('roles', 'skillsets', 'hours', 'checklists', 'experiences', 'qualifications', 'attachments', 'assignee', 'review')->where('status', 2)->where('user_id', Auth::id())->get()->groupBy('assignee_id');
         return [
             'data' => $projectDetails,
             'status' => 200,

@@ -29,6 +29,9 @@ class LoginController extends Controller
             if (Auth::user()->role == 'org') {
                 $user = User::with('orgProfile', 'orgAcademic', 'orgDocument', 'orgRequirement', 'orgSpecialisation')->where('id', Auth::id())->first();
             }
+            if (Auth::user()->role == 'admin') {
+                $user = User::with('orgProfile', 'orgAcademic', 'orgDocument', 'orgRequirement', 'orgSpecialisation')->where('id', Auth::id())->first();
+            }
             $success['token'] = $user->createToken('Intrasaur')->plainTextToken;
             return response()->json([
                 'data' => $user,

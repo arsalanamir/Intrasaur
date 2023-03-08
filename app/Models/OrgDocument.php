@@ -13,7 +13,8 @@ class OrgDocument extends Model
         'detail',
         'document_image',
         'is_verfied',
-        'user_id'
+        'user_id',
+        'reject_reason'
     ];
     public function orgDocuments()
     {

@@ -22,7 +22,8 @@ class CreateUserDocumentsTable extends Migration
             $table->string('document_name')->nullable();
             $table->string('detail')->nullable();
             $table->string('document_image')->nullable();
-            $table->integer('is_verfied')->nullable();
+            $table->integer('is_verfied')->default(0);
+            $table->integer('reject_reason')->nullable();
             $table->timestamps();
         });
     }
