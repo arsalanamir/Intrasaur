@@ -37,6 +37,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(UserDocument::class);
     }
 
+    public function countDocuments()
+    {
+        return $this->hasMany(UserDocument::class)->where('is_verified',1)->count();
+    }
+    public function userReview()
+    {
+        return $this->hasMany(Review::class, 'sender_id');
+    }
+    public function countUserReview()
+    {
+        return $this->hasMany(Review::class, 'sender_id')->where('status', 1)->count();
+    }
     public function educations()
     {
         return $this->hasMany(UserEducation::class);

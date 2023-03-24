@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\Admin\ComplaintController;
+use App\Http\Controllers\API\Admin\DashboardController;
 use App\Http\Controllers\API\Admin\DocumentsController;
 use App\Http\Controllers\API\Admin\ProfileController;
 use App\Http\Controllers\API\Admin\ReiewController;
@@ -129,6 +130,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/addComplaint', [ComplaintController::class, 'addComplaint']);
     Route::get('/allComplaints', [ComplaintController::class, 'allComplaints']);
     Route::get('/openComplain/{id}', [ComplaintController::class, 'openComplain']);
+
+
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/AlluserDataWithCount', [DashboardController::class, 'AlluserDataWithCount']);
+
 
 
 });
