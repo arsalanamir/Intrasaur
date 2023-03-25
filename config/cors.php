@@ -17,7 +17,7 @@ return [
 
     'paths' => ['api/*'],
     'allowed_methods' => ['*'],
-    'allowed_origins' => ['http://localhost:3000', 'https://myapp.com'],
+    'allowed_origins' => ['http://localhost:3000', 'https://intrasaur.kabfood.com/Intrasaur/public/'],
     'allowed_origins_patterns' => [],
     'allowed_headers' => ['*'],
     'exposed_headers' => [],

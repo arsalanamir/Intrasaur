@@ -41,8 +41,8 @@ Route::get('/demo-url',  function  (Request $request)  {
    return response()->json(['Laravel CORS Demo']);
 });
 
-Route::post('register', [RegisterController::class, 'register']);
-Route::post('login', [LoginController::class, 'login']);
+Route::post('apiregister', [RegisterController::class, 'register']);
+Route::post('apilogin', [LoginController::class, 'login']);
 
 Route::post('password/email',  [ForgotPasswordController::class, 'sendEmail']);
 Route::post('password/code/check', [CodeCheckController::class, 'checkCode']);
