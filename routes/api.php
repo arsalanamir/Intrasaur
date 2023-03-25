@@ -37,6 +37,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/demo-url',  function  (Request $request)  {
+   return response()->json(['Laravel CORS Demo']);
+});
+
 Route::post('register', [RegisterController::class, 'register']);
 Route::post('login', [LoginController::class, 'login']);
 
