@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Auth;
+namespace App\Http\Controllers\API;
 
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
-class LoginController extends Controller
+class UserLoginController extends Controller
 {
     public function login(Request $request)
     {
@@ -24,7 +24,7 @@ class LoginController extends Controller
         // dd($request->all());
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             if (Auth::user()->role == 'user') {
-            $user = User::with('profile','professions', 'educations','qualifications','experties','documents')->where( 'id' ,Auth::id())->first();
+                $user = User::with('profile', 'professions', 'educations', 'qualifications', 'experties', 'documents')->where('id', Auth::id())->first();
             }
             if (Auth::user()->role == 'org') {
                 $user = User::with('orgProfile', 'orgAcademic', 'orgDocument', 'orgRequirement', 'orgSpecialisation')->where('id', Auth::id())->first();

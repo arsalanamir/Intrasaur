@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API\Auth;
+namespace App\Http\Controllers\API;
 
 use Carbon\Carbon;
 use App\Models\User;
@@ -16,8 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
-
-class RegisterController extends Controller
+class NewUserController extends Controller
 {
     public function register(Request $request)
     {

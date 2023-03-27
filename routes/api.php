@@ -1,30 +1,30 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\NewUserController;
+use App\Http\Controllers\API\UserLoginController;
+use App\Http\Controllers\API\Admin\ReiewController;
+use App\Http\Controllers\API\Profile\UserController;
+use App\Http\Controllers\API\Admin\ProfileController;
+use App\Http\Controllers\API\Auth\CodeCheckController;
 use App\Http\Controllers\API\Admin\ComplaintController;
 use App\Http\Controllers\API\Admin\DashboardController;
 use App\Http\Controllers\API\Admin\DocumentsController;
-use App\Http\Controllers\API\Admin\ProfileController;
-use App\Http\Controllers\API\Admin\ReiewController;
-use App\Http\Controllers\API\Auth\CodeCheckController;
-use App\Http\Controllers\API\Auth\ForgotPasswordController;
-use App\Http\Controllers\API\Auth\LoginController;
-use App\Http\Controllers\API\Auth\RegisterController;
 use App\Http\Controllers\API\Auth\ResetPasswordController;
-use App\Http\Controllers\API\Organization\OrgAcademicController;
-use App\Http\Controllers\API\Organization\OrgDocumentController;
-use App\Http\Controllers\API\Organization\OrgProfileController;
-use App\Http\Controllers\API\Organization\OrgProjectController;
-use App\Http\Controllers\API\Organization\OrgRequirmentController;
-use App\Http\Controllers\API\Organization\OrgSpecialisationController;
-use App\Http\Controllers\API\Profile\UserController;
+use App\Http\Controllers\API\Auth\ForgotPasswordController;
+use App\Http\Controllers\API\Profile\UserExpertyController;
+use App\Http\Controllers\API\Profile\UserProfileController;
 use App\Http\Controllers\API\Profile\UserDocumentController;
 use App\Http\Controllers\API\Profile\UserEducationController;
-use App\Http\Controllers\API\Profile\UserExpertyController;
 use App\Http\Controllers\API\Profile\UserProfessionController;
-use App\Http\Controllers\API\Profile\UserProfileController;
+use App\Http\Controllers\API\Organization\OrgProfileController;
+use App\Http\Controllers\API\Organization\OrgProjectController;
+use App\Http\Controllers\API\Organization\OrgAcademicController;
+use App\Http\Controllers\API\Organization\OrgDocumentController;
 use App\Http\Controllers\API\Profile\UserQualificationController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\Organization\OrgRequirmentController;
+use App\Http\Controllers\API\Organization\OrgSpecialisationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,17 +41,17 @@ Route::get('/demo-url',  function  (Request $request)  {
    return response()->json(['Laravel CORS Demo']);
 });
 
-Route::post('apiregister', [RegisterController::class, 'register']);
-Route::post('apilogin', [LoginController::class, 'login']);
+Route::post('apiregister', [NewUserController::class, 'register']);
+Route::post('apilogin', [UserLoginController::class, 'login']);
 
 Route::post('password/email',  [ForgotPasswordController::class, 'sendEmail']);
 Route::post('password/code/check', [CodeCheckController::class, 'checkCode']);
 Route::post('password/reset', [ResetPasswordController::class, 'setPassword']);
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::post('/verify/otp', [RegisterController::class, 'verifyEmailOtp']);
-    Route::post('/resend/email', [RegisterController::class, 'resendEmail']);
-    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::post('/verify/otp', [NewUserController::class, 'verifyEmailOtp']);
+    Route::post('/resend/email', [NewUserController::class, 'resendEmail']);
+    Route::post('/logout', [UserLoginController::class, 'logout']);
 
     Route::post('/updateProfile', [UserProfileController::class, 'updateProfile']);
 
